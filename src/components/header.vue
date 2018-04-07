@@ -5,7 +5,7 @@
 				<div class="button-search"></div>
 				<input class="keyword" @input="sub()" type="text" value="Search..." onfocus="if (this.value == 'Search...') {this.value = '';}" @blur="myblur()">
                 <ul class="result">
-                    <li v-for="item in movieList">
+                    <li v-for="(item,i) in movieList" :key="i">
                         {{item.title}}
                     </li>
                 </ul>
@@ -64,6 +64,8 @@ export default {
                     })
                     this.movieList = newArr;
                 })
+            }else {
+                this.movieList = [];
             }
         }
     }
