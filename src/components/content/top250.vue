@@ -19,7 +19,7 @@
             return {
                 movieList:[],
                 myPopShow: false,
-                requestLocation: "https://api.douban.com/v2/movie/in_theaters"
+                requestLocation: "https://api.douban.com/v2/movie/top250"
             }
         },
         components: {

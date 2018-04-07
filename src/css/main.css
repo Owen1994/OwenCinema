@@ -38,6 +38,9 @@
     -moz-transform:translate(-50%,0);
     transform:translate(-50%,0);
     cursor:pointer;
+    width: fit-content;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
 }
 .indicator_container {
     width:100%;
