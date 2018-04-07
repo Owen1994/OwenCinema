@@ -28,6 +28,7 @@
 					</ul>
 				</div>
 			</div>
+
 		</nav>
 		
 	</div>
@@ -51,10 +52,19 @@ export default {
             this.movieList = [];
         },
         sub() {
+            // this.movieList = [];
             var val = document.querySelector(".keyword").value;
             var _this = this;
             if(val != "Search..." && val != "") {
-                this.$http.jsonp("https://api.douban.com/v2/movie/search?q="+ val,{method:"GET"}).then(function(response) {
+                this.$http.jsonp("https://api.douban.com/v2/movie/search?q="+ val,{
+                        method:"GET",
+                        before(request) {
+                            if (this.previousRequest) {
+                                this.previousRequest.abort();
+                            }
+                            this.previousRequest = request;
+                        }
+                    }).then(function(response) {
                     var arr = response.body.subjects;
                     var newArr = [];
                     arr.forEach(function(v,i) {
